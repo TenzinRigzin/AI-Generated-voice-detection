@@ -1,5 +1,6 @@
 # AI-Generated Voice Detection
-
+Deployed website: 
+>https://audioaidetect.lovable.app
 ## 📌 Project Overview
 This project focuses on **detecting AI-generated (synthetic) voice audio and distinguishing it from human-originated voice samples** using machine learning / deep learning techniques.
 
