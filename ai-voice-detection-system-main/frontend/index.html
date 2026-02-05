@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Detection System</title>
+    <meta name="description" content="Detect whether an audio file contains human or AI-generated voice">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Voice Detection System</h1>
+            <p class="subtitle">Upload an audio file to analyze if it's human or AI-generated</p>
+        </header>
+
+        <main class="upload-section">
+            <!-- File Upload Area -->
+            <div class="upload-area" id="uploadArea">
+                <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                <p class="upload-text">Click to upload or drag and drop</p>
+                <p class="upload-hint">Supported formats: WAV, MP3</p>
+                <input type="file" id="audioFile" accept=".wav,.mp3,audio/wav,audio/mpeg" hidden>
+            </div>
+
+            <!-- Selected File Display -->
+            <div class="file-info" id="fileInfo" style="display: none;">
+                <div class="file-details">
+                    <svg class="file-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                    </svg>
+                    <div class="file-text">
+                        <p class="file-name" id="fileName"></p>
+                        <p class="file-size" id="fileSize"></p>
+                    </div>
+                </div>
+                <button class="remove-btn" id="removeFile" aria-label="Remove file">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Predict Button -->
+            <button class="predict-btn" id="predictBtn" disabled>
+                <span id="btnText">Analyze Audio</span>
+                <div class="spinner" id="spinner" style="display: none;"></div>
+            </button>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage" style="display: none;"></div>
+
+            <!-- Results Section -->
+            <div class="results" id="results" style="display: none;">
+                <h2>Analysis Results</h2>
+                
+                <div class="prediction-card">
+                    <p class="prediction-label">Prediction</p>
+                    <p class="prediction-value" id="predictionValue"></p>
+                </div>
+
+                <div class="confidence-section">
+                    <h3>Confidence Scores</h3>
+                    <div class="confidence-bars">
+                        <div class="confidence-item">
+                            <div class="confidence-header">
+                                <span class="confidence-label">Human Voice</span>
+                                <span class="confidence-percent" id="humanPercent">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill human" id="humanBar"></div>
+                            </div>
+                        </div>
+                        <div class="confidence-item">
+                            <div class="confidence-header">
+                                <span class="confidence-label">AI-Generated</span>
+                                <span class="confidence-percent" id="aiPercent">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill ai" id="aiBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by FastAPI & Machine Learning</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
